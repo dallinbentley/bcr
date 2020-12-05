@@ -11,7 +11,7 @@ class Employer(models.Model):
     company_zip = models.CharField(max_length=10)
     company_url = models.CharField(max_length=50)
     company_email = models.CharField(max_length=50)
-    #company_image = models.ImageField(upload_to="photos")
+    company_image = models.ImageField(upload_to="photos")
 
     def __str__(self):
         return self.company_name
@@ -24,7 +24,7 @@ class Applicant(models.Model):
     birthdate = models.CharField(max_length=50)
     phone = models.CharField(max_length=50)
     email = models.CharField(max_length=50)
-    resume = models.FileField(upload_to="resumes")
+    resume = models.FileField(upload_to="resume")
     skill_1 = models.ForeignKey('jobs.Skill', on_delete=models.DO_NOTHING)
     skill_2 = models.ForeignKey('jobs.Skill', on_delete=models.DO_NOTHING)
     skill_3 = models.ForeignKey('jobs.Skill', on_delete=models.DO_NOTHING)

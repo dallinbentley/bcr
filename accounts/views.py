@@ -9,6 +9,23 @@ def testview(request):
     print('this is a test.')
     return('the test worked')
 
+def applicationsPageView(request):
+    return render(request, 'accounts/applications.html')
+
+def signupApplicantPageView(request):
+    return render(request, 'accounts/signup-applicant.html')
+
+def signupEmployerPageView(request):
+    return render(request, 'accounts/signup-employer.html')
+
+def deleteAccountPageView(request):
+    return render(request, 'accounts/delete-account.html')
+
+def viewAccountApplicantPageView(request):
+    return render(request, 'accounts/view-account-applicant.html')
+
+def viewAccountEmployerPageView(request):
+    return render(request, 'accounts/view-account-employer.html')
 
 def logout_request(request):
     logout(request)
