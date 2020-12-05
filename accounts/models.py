@@ -25,11 +25,11 @@ class Applicant(models.Model):
     phone = models.CharField(max_length=50)
     email = models.CharField(max_length=50)
     resume = models.FileField(upload_to="resume")
-    skill_1 = models.ForeignKey('jobs.Skill', on_delete=models.DO_NOTHING)
-    skill_2 = models.ForeignKey('jobs.Skill', on_delete=models.DO_NOTHING)
-    skill_3 = models.ForeignKey('jobs.Skill', on_delete=models.DO_NOTHING)
-    skill_4 = models.ForeignKey('jobs.Skill', on_delete=models.DO_NOTHING)
-    skill_5 = models.ForeignKey('jobs.Skill', on_delete=models.DO_NOTHING)
+    skill_1 = models.ForeignKey('jobs.Skill', related_name="skill_1", on_delete=models.DO_NOTHING)
+    skill_2 = models.ForeignKey('jobs.Skill', related_name="skill_2", on_delete=models.DO_NOTHING)
+    skill_3 = models.ForeignKey('jobs.Skill', related_name="skill_3", on_delete=models.DO_NOTHING)
+    skill_4 = models.ForeignKey('jobs.Skill', related_name="skill_4", on_delete=models.DO_NOTHING)
+    skill_5 = models.ForeignKey('jobs.Skill', related_name="skill_5", on_delete=models.DO_NOTHING)
 
     def __str__(self):
         return self.last_name + ', ' + self.first_name + ': ' + self.username
