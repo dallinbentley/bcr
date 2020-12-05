@@ -2,4 +2,5 @@ from django.shortcuts import render
 
 # Create your views here.
 def test(request):
-    print('this is a test.')
+    print('this is a test again.')
+    return ('this is still a test.')
