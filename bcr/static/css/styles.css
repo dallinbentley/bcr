@@ -61,7 +61,7 @@ input[type=text], input[type=password] {
     margin: 5px 0 22px 0;
     display: inline-block;
     border: none;
-    background: #f1f1f1;
+    background: var(--ash);
   }
   
   /* Add a background color when the inputs get focus */
@@ -97,7 +97,7 @@ input {
     display: inline-block;
     text-align: start;
     appearance: textfield;
-    background-color: -internal-light-dark(rgb(255, 255, 255), rgb(59, 59, 59));
+    background-color: var(--v-slate);
     -webkit-rtl-ordering: logical;
     cursor: text;
     margin: 0em;
@@ -111,7 +111,7 @@ input {
 
   /* Set a style for all form buttons */
   .clearfix  button {
-    background-color: #4CAF50;
+    background-color: var(--slate-blue);
     color: white;
     padding: 14px 20px;
     margin: 8px 0;
@@ -128,11 +128,11 @@ input {
   /* Extra styles for the cancel button */
   .cancelbtn {
     padding: 14px 20px;
-    background-color: #f44336;
+    background-color: var(--rust);
   }
   
   /* Float cancel and signup buttons and add an equal width */
-  .cancelbtn, .signupbtn {
+  .cancelbtn, .signupbtn, .loginbtn {
     float: left;
     width: 50%;
   }
@@ -152,21 +152,21 @@ input {
     width: 100%; /* Full width */
     height: 100%; /* Full height */
     overflow: auto; /* Enable scroll if needed */
-    background-color: #474e5d;
+    background-color: var(--v-mountain);
     padding-top: 50px;
   }
   
   /* Modal Content/Box */
   .modal-content {
-    background-color: #fefefe;
+    background-color: var(--ash);
     margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
-    border: 1px solid #888;
+    border: 1px solid var(--v-mountain);
     width: 80%; /* Could be more or less, depending on screen size */
   }
   
   /* Style the horizontal ruler */
   hr {
-    border: 1px solid #f1f1f1;
+    border: 1px solid var(--ash);
     margin-bottom: 25px;
   }
    
@@ -177,12 +177,12 @@ input {
     top: 15px;
     font-size: 40px;
     font-weight: bold;
-    color: #f1f1f1;
+    color: var(--ash);
   }
   
   .close:hover,
   .close:focus {
-    color: #f44336;
+    color: var(--rust);
     cursor: pointer;
   }
   
@@ -191,6 +191,12 @@ input {
     content: "";
     clear: both;
     display: table;
+  }
+
+  /* Set a grey background color and center the text of the "sign in" section */
+  .signin {
+    background-color: var(--ash);
+    text-align: center;
   }
   
 
@@ -209,7 +215,7 @@ Homepage Stuff
     -webkit-transition: background-color .5s;
     -o-transition: background-color .5s;
     transition: background-color .5s;
-    height: 175px;
+    height: 250px;
     width: 100vw;
 }
 
@@ -390,185 +396,6 @@ a {
 div {
     display: block;
 }
-
-
-/**************
-Homepage Icons
-***************/
-/*******
-toolbox
-*******/
-.gg-toolbox {
-    box-sizing: border-box;
-    position: relative;
-    display: block;
-    transform: scale(var(--ggs,1));
-    width: 22px;
-    height: 16px;
-    border: 2px solid;
-    border-radius: 2px
-   }
-   
-   .gg-toolbox::after,
-   .gg-toolbox::before {
-    content: "";
-    display: block;
-    box-sizing: border-box;
-    position: absolute
-   }
-   
-   .gg-toolbox::before {
-    border: 2px solid;
-    border-bottom: 0;
-    border-top-left-radius: 3px;
-    border-top-right-radius: 3px;
-    left: 4px;
-    width: 10px;
-    height: 4px;
-    top: -5px
-   }
-   
-   .gg-toolbox::after {
-    width: 18px;
-    height: 2px;
-    border-left: 4px solid transparent;
-    border-right: 4px solid transparent;
-    box-shadow:
-    0 -2px 0,
-    inset 4px 0 0,
-    inset -4px 0 0;
-    top: 4px
-   } 
-
-   /********
-   Calendar
-   ********/
-   .gg-calendar-today {
-    box-sizing: border-box;
-    position: relative;
-    display: block;
-    transform: scale(var(--ggs,1));
-    width: 18px;
-    height: 18px;
-    border: 2px solid;
-    border-top: 4px solid;
-    border-radius: 3px
-   }
-   
-   .gg-calendar-today::before {
-    content: "";
-    display: block;
-    box-sizing: border-box;
-    position: absolute;
-    background: currentColor;
-    height: 4px;
-    width: 4px;
-    border-radius: 2px;
-    right: 2px;
-    bottom: 2px
-   } 
-
-/********
-Events
-********/
-.gg-list-tree {
-    box-sizing: border-box;
-    position: relative;
-    display: block;
-    width: 22px;
-    height: 22px;
-    transform: scale(var(--ggs,1));
-    background:
-    linear-gradient(
-    to left,
-    currentcolor 8px,
-    transparent 0
-    ) no-repeat left top/8px 8px,
-    linear-gradient(
-    to left,
-    currentcolor 8px,
-    transparent 0
-    ) no-repeat center 3px/8px 2px,
-    linear-gradient(
-    to left,
-    currentcolor 8px,
-    transparent 0
-    ) no-repeat 10px 17px/6px 2px,
-    linear-gradient(
-    to left,
-    currentcolor 8px,
-    transparent 0
-    ) no-repeat 10px 3px/2px 16px
-   }
-   
-   .gg-list-tree::after,
-   .gg-list-tree::before {
-    content: "";
-    display: block;
-    box-sizing: border-box;
-    position: absolute;
-    width: 8px;
-    height: 8px;
-    border: 2px solid;
-    right: 0
-   }
-   
-   .gg-list-tree::after {
-    bottom: 0
-   } 
-
-   /******
-   Events
-   ******/
-   .gg-organisation {
-    background:
-    linear-gradient(to bottom,
-    currentColor 5px,transparent 0)
-    no-repeat center 2px/12px 2px,
-    linear-gradient(to bottom,
-    currentColor 5px,transparent 0)
-    no-repeat center 6px/12px 2px,
-    linear-gradient(to bottom,
-    currentColor 5px,transparent 0)
-    no-repeat center 10px/12px 2px,
-    linear-gradient(to bottom,
-    currentColor 18px,transparent 0)
-    no-repeat center/2px 18px;
-    box-sizing: border-box;
-    position: relative;
-    display: block;
-    transform: scale(var(--ggs,1));
-    width: 12px;
-    height: 18px;
-    border: 2px solid
-    }
-   
-    .gg-organisation::after,
-    .gg-organisation::before {
-    content: "";
-    display: block;
-    box-sizing: border-box;
-    position: absolute
-    }
-   
-    .gg-organisation::before {
-    background: currentColor;
-    right: -8px;
-    top: 6px;
-    box-shadow: 0 4px 0,
-    -4px 4px 0,
-    -4px 0 0;
-    width: 2px;
-    height: 2px
-    }
-   
-    .gg-organisation::after {
-    width: 12px;
-    height: 14px;
-    border: 2px solid;
-    left: 8px;
-    bottom: -2px
-    } 
 
 /****************
    Footer stuff
