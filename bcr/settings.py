@@ -83,7 +83,7 @@ DATABASES = {
         'NAME': 'bcr',
         'USER': 'postgres',
         'PASSWORD': 'password',
-        'HOST': 'database-1.cskdwlsgsech.us-east-1.rds.amazonaws.com',
+        'HOST': 'localhost',
         'PORT': '5432'
     }
 }
