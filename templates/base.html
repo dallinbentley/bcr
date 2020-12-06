@@ -1,4 +1,4 @@
-<!--{% load static %}-->
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -30,8 +30,7 @@
     <link href="{% static 'css/styles.css' %}" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-    <link href="{% static 'img/favicon.png' %}" rel="shortcut icon" type="image/x-icon" />
-	<link href="{% static 'img/favicon.png' %}" rel="icon" type="image/x-icon" />
+    <link rel="shortcut icon" type="image/png" href="{% static 'img/favicon.png' %}"/>
     <title>Homepage</title>
 </head>
 <body>
@@ -40,21 +39,21 @@
     <ul class="main-nav">
       <li><a class="active" href="{% url 'home' %}"><span class="hidden">Home</span><i class="fas fa-home"></i></a></li>
       <li><a href="{% url 'jobs' %}">Jobs</a></li>
-      <li><a href="">Employers</a></li>
+      <li><a href="{% url 'employerlist' %}">Employers</a></li>
       <li><a href="">Events</a></li>    
     </ul>
     <ul class="other-nav">
         <div class="dropdown">
             <li>
-              <a href="past-assignments/index.html">
+              <a href="">
                 Account <i class="fas fa-angle-down"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               </a>
             </li>
             <div class="dropdown-content">
-                <li><a href="">Profile</a></li>
+                <li><a href="{% url 'view-applicant' %}">Profile</a></li>
                 <li><a href="">Saved Jobs</a></li>
                 <li><a href="">Applications</a></li>
-                <li><a href="">Logout</a></li>
+                <li><a href="{% url 'logout' %}">Logout</a></li>
             </div>
         </div>
       <li><a href=""><i class="fa fa-pinterest"></i></a></li>
@@ -69,6 +68,7 @@
 
 <a class="go-top" href="#">Back to Top</a>
 <footer>
-    <p>&copy Black Cyber Recruiter</p>
+    <p>&copy Black Cyber Recruiter 2020</p>
 </footer>
 </body>
+</html>

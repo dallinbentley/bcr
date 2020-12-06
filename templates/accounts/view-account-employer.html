@@ -2,15 +2,12 @@
 {% load static %}
 {% block content %}
 
-add job
-remove job
-recruiting
-see applications and applicant information
-chat with applicants (messaging system)
--login
--logout
--view account information
--update information and resume
--delete account
-
+<button href="{% url 'addlisting'%}">Add Job Listing</button>
+<button href="{% url 'removelisting'%}">Remove Job Listing</button>
+<button href="{% url 'editlisting'%}">Edit Job Listing</button>
+<button href="{% url 'find'%}">Find Applicants</button>
+<button href="{% url 'messaging'%}">Message Applicants</button>
+<button href="{% url 'view-account-employer'%}">View Account Information</button>
+<button href="{% url 'deleteaccount-employer'%}">Delete Account</button>
+<button href="{% url 'logout'%}">Logout</button>
 {% endblock %}

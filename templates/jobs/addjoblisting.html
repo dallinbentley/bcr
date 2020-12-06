@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<script>
+    function validateAndSend() {
+        if (myForm.telephone.wage == '' && myForm.mobile.salary == '') {
+            alert('You have to enter either wage or salary.');
+            return false;
+        }
+        else {
+            myForm.submit();
+        }
+    }
+</script>
+
+<div id="id01" class="modal">
+  <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+  <form name='myform' class="modal-content" action="">
+    <div class="container">
+      <h1>Add Job Listing</h1>
+      <p>Please fill out this form to create a job listing.</p>
+      <hr>
+      <label for="jobtitle"><b>Enter the Job Title:</b></label>
+      <input type="text" placeholder="Job Title" name="jobtitle" id="jobtitle" required>
+
+      <label for="jobtype"><b>Select the Type of Job:</b></label>
+      <select name='jobtype' id='jobtype' required>
+        <option value='input job types'>input job types</option>
+        </select>
+      
+      <label for="wage"><b>Enter the Hourly Wage(PartTime Position):</b></label>
+      <input type="number"  name="wage" id="wage" step= 0.01 min=0>
+
+      <label for="salary"><b>Enter the Starting Salary(FullTime Posisiton):</b></label>
+      <input type="number"  name="salary" id="salary" step=0.01 min=0>
+      
+    
+      <label for="jobdescription"><b>Enter the Job Description: </b></label>
+      <input type="text" placeholder="Job Description" name="jobdescription" id="jobdescription" required>
+
+      <label for="preferredskill1"><b>Select a Preferred Skill of the Employee(optional):</b></label>
+      <select name='preferredskill1' id='preferredskill1' >
+        <option value='input skills'>input skills</option>
+        </select>
+
+      <label for="preferredskill2"><b>Select a Preferred Skill of the Employee(optional):</b></label>
+      <select name='preferredskill2' id='preferredskill2' >
+        <option value='input skills'>input skills</option>
+        </select>
+
+      <label for="preferredskill3"><b>Select a Preferred Skill of the Employee(optional):</b></label>
+      <select name='preferredskill3' id='preferredskill3' >
+        <option value='input skills'>input skills</option>
+        </select>
+
+      
+        <button type="button" onclick='validateAndSend()'>Post Job Listing</button>
+      
+    </div>
+  </form>
+</div>
+
+
+
+
+{% endblock %}

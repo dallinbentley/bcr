@@ -10,3 +10,10 @@ def jobinfoPageView(request):
 
 def availableJobsPageView(request):
     return render(request, 'jobs/jobs.html')
+
+def addJobListingPageView(request):
+    return render(request, 'jobs/addjoblisting.html')
+
+
+def employersListPageView(request):
+    return render(request, 'jobs/employerslist.html')
