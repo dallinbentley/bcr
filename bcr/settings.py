@@ -84,7 +84,7 @@ DATABASES = {
         'USER': 'postgres',
         'PASSWORD': 'password',
         'HOST': 'intex.cskdwlsgsech.us-east-1.rds.amazonaws.com',
-        'PORT': '5432',
+        'PORT': '5432'
     }
 }
 
