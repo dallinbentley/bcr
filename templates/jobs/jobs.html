@@ -1,26 +1,20 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-{%for job in jobs %}
-<div class="job-listings">
-    <a href={%url 'jobinfo'%}> <img src="{{job.company_id.image.url}}" style="width:300px;height:300px">
-        <h3>{{job.job_title}}</h3>
-            <h2>{{job.company_id.company_name}}</h2>
-    </a>
-    {% endfor %}
 
 <div class="job-listings-cards">
+{%for job in jobs %}
     <div class="job-listings-card">
-        <a href>
+        <a href={%url 'jobinfo' jobID=job.id applicantID=applicantID%}>
             <div class="image-wrapper"> 
-            <img src="{% static 'img/hero-image-600w.jpg' %}" style="width:400px;height:400px">
+            <img src="{{job.company_ID.company_image.url}}" style="width:300px;height:300px">
             </div>
-            <h3>DevOp Intern</h3>
-            <h2>Thumbs Up, Good Time Games</h2>
-            <h2>Provo, UT</h2>
-            <h2>May 2021 - August 2021</h2>
+            <h3>{{job.job_title}}</h3>
+            <h2>{{job.company_ID.company_name}}</h2>
+            
         </a>
     </div>
+    {% endfor %}
 </div>
 
 

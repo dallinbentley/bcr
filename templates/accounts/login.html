@@ -1,12 +1,24 @@
-{% extends 'base.html' %}
 {% load static %}
-{% block content %}
-<div class="vpDiv _findYourFamily">
-    <div class="centerWrapper">
-        <div class="valueProposition">
-            <h1 class="largeTitle">
-                <h2>Login</h2>
-            </h1><button onclick="document.getElementById('id01').style.display='block'">Login</button>
+
+<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+            crossorigin="anonymous"></script>
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'img/favicon-16x16.png' %}">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+    <link href="https://fonts.googleapis.com/css?family=Domine|Roboto" rel="stylesheet">
+    <link href="{% static 'css/styles.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <title>Welcome!</title>
+</head>
+
+<body>
+</h1><button onclick="document.getElementById('id01').style.display='block'">Login</button>
 <div id="id01" class="modal">
 {% if message != ''%} {{message}} {% endif %}
   <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
@@ -19,8 +31,14 @@
       <label for="username"><b>Username</b></label>
       <input type="text" placeholder="Enter Username" name="username" id="username" required>
 
+      <br>
+      <br>
+
       <label for="psw"><b>Password</b></label>
       <input type="password" placeholder="Enter Password" name="psw" required>
+
+      <br>
+      <br>
 
       <label>
         <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
@@ -33,7 +51,7 @@
     </div>
     
     <div class="container signin">
-        <p>Need to sign up for an account? <a href="{% url 'userlogin' %}">Sign up here</a>.</p>
+        <p>Need to sign up for an account? <a href="{% url 'home' %}">Sign up here</a>.</p>
     </div>
   </form>
 </div>
@@ -52,4 +70,4 @@ window.onclick = function(event) {
 </div>
 </div>
 </div>
-{% endblock %}
+</body>

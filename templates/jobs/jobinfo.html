@@ -3,22 +3,22 @@
 {% block content %}
     <h2>You Selected:</h2>
         <div>           
-                <h4>{{ sJob.job_title }}</h4>
-                 <p id="category">Company: {{ sJob.company_id.company_name }}</p>
-                 <p id="price">Type: {{ sJob.job_type }}</p>
-                 <p id="description">Job Description: {{ sJob.job_description }}</p>
-                 {% if sJob.wage != null%}
-                 <p id="wage">Wage: ${{sJob.wage}}
+                <h4>{{ Job.job_title }}</h4>
+                 <p id="category">Company: {{ Job.company_ID.company_name }}</p>
+                 <p id="price">Type: {{ Job.job_type }}</p>
+                 <p id="description">Job Description: {{ Job.job_description }}</p>
+                 {% if Job.wage != null%}
+                 <p id="wage">Wage: ${{Job.wage}}
                  {%else%}
-                 <p id="salary">Salary: ${{sJob.salary}}
+                 <p id="salary">Salary: ${{Job.salary}}
                  {% endif %}
                  <h5>Preferred Skills</h5>
                  <ul>
-                    <li>{{sJob.preferred_skill1}}
-                    <li>{{sJob.preferred_skill2}}
-                    <li>{{sJob.preferred_skill3}}
+                    <li>{{Job.preferred_skill1}}
+                    <li>{{Job.preferred_skill2}}
+                    <li>{{Job.preferred_skill3}}
                 </ul>
         </div>
-<button type="submit" onclick="location.href='{% url 'deletejob' jobID=sJob.id %}'">Delete</button> 
+<button type="submit" onclick="location.href='{% url 'deletejob' jobID=Job.id %}'">Delete</button> 
 
 {% endblock %}

@@ -6,22 +6,26 @@ from accounts.models import Employer
 def indexPageView(request):
     return render(request, 'jobs/index.html')
 
-def homepageView(request):
-    return render(request, 'jobs/homepage.html')
-
 def applicantHomepageView(request):
     return render(request, 'jobs/applicant-homepage.html')
 
 def employerHomepageView(request):
     return render(request, 'jobs/employer-homepage.html')
 
-def jobinfoPageView(request):
-    return render(request, 'jobs/jobinfo.html')
+def jobinfoPageView(request, jobID, applicantID):
+    currentjob = JobListing.objects.get(id=jobID)
+    context={
+        'Job':currentjob,
+        'applicantID':applicantID
+    }
 
-def availableJobsPageView(request):
+    return render(request, 'jobs/jobinfo.html', context)
+
+def availableJobsPageView(request, applicantID):
     data = JobListing.objects.all()
     context={
-        'jobs': data
+        'jobs': data,
+        'applicantID': applicantID
     }
     return render(request, 'jobs/jobs.html', context)
 
@@ -108,9 +112,4 @@ def deleteJobListing(request, jobID):
 
     return render(request, 'jobs.jobs.html', context)
 
-def deleteAccount(request, employerID):
-    Employer.objects.get(id=employerID).delete()
 
-    JobListing.objects.filter(id=employerID).delete()
-
-    return render(request, 'jobs/index.html')

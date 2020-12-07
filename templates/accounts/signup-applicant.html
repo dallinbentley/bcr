@@ -1,16 +1,13 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-<div class="vpDiv _findYourFamily">
-    <div class="centerWrapper">
-        <div class="valueProposition">
-            <h1 class="largeTitle">
-                <h2>Employer Sign Up</h2>
-            </h1>
-            <button onclick="document.getElementById('id01').style.display='block'">Sign Up</button>
+
+<h2>Applicant Sign Up</h2>
+<button onclick="document.getElementById('id01').style.display='block'">Sign Up</button>
 <div id="id01" class="modal">
   <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-  <form class="modal-content" action="/action_page.php" enctype="multipart/form-data">
+  <form class="modal-content" action="{% url 'registered-applicant'%}" method='Post' enctype="multipart/form-data">
+  {% csrf_token %}
     <div class="container">
       <h1>Applicant Sign Up</h1>
       <p>Please fill out this form to create an account.</p>
@@ -46,6 +43,60 @@
 
       <label for="resume"><b>Resume Upload:</b></label>
       <input type="file" placeholder="Upload Resume" name="resume" id="resume" required>
+
+      <br>
+      <br>
+
+      <label for='skill1'> Choose a Skill </label>
+      <select name="skill1">
+      {% for skill in skills%}<option value="{{skill.skill_description}}">{{skill.skill_description}}
+      </option>
+      {% endfor %}
+      </select>
+      
+      <br>
+      <br>
+
+      <label for='skill2'> Choose a Skill </label>
+      <select name="skill2">
+      {% for skill in skills%}
+      <option value="{{skill.skill_description}}">
+      {{skill.skill_description}}
+      </option>
+      {% endfor %}
+      </select>
+
+      <br>
+      <br>
+
+      <label for='skill3'> Choose a Skill </label>
+      <select name="skill3">
+      {% for skill in skills%}
+      <option value="{{skill.skill_description}}">
+      {{skill.skill_description}}
+      </option>
+      {% endfor %}
+      </select>
+
+      <br>
+      <br>
+
+      <label for='skill4'> Choose a Skill </label>
+      <select name="skill4">
+      {% for skill in skills%}
+      <option value="{{skill.skill_description}}">
+      {{skill.skill_description}}
+      </option>
+      {% endfor %}</select>
+
+      <br>
+      <br>
+
+      <label for='skill5'> Choose a Skill </label>
+      <select name="skill5">
+      {% for skill in skills%}
+      <option value="{{skill.skill_description}}">{{skill.skill_description}}</option>
+      {% endfor %}</select>
 
       <br>
       <br>
@@ -96,8 +147,6 @@ window.onclick = function(event) {
   }
 }
 </script>
-                  </div>
-              </div>
-          </div>
+
 
 {% endblock %}

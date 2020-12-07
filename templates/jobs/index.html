@@ -6,19 +6,7 @@
   src="https://code.jquery.com/jquery-3.3.1.min.js"
   integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
             crossorigin="anonymous"></script>
-    <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
-    <link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="76x76" href="/apple-icon-76x76.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="/apple-icon-114x114.png">
-    <link rel="apple-touch-icon" sizes="120x120" href="/apple-icon-120x120.png">
-    <link rel="apple-touch-icon" sizes="144x144" href="/apple-icon-144x144.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="/apple-icon-152x152.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png">
-    <link rel="icon" type="image/png" sizes="192x192"  href="/android-icon-192x192.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'img/favicon-16x16.png' %}">
     <link rel="manifest" href="/manifest.json">
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
@@ -27,26 +15,26 @@
     <link href="{% static 'css/styles.css' %}" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-    <link rel="shortcut icon" type="image/png" href="{% static 'img/favicon.png' %}"/>
     <title>Welcome!</title>
 </head>
-</body>
+<body>
 
-<div class="vpDiv _findYourFamily">
+<div class="vpDiv _findYourFamily" style="background-image: url({% static 'img/index-pic.jpg' %});">
     <div class="centerWrapper">
         <div class="valueProposition">
             <h1 class="largeTitle">
                 Create Your FREE Account
             </h1>
             <a href="{% url 'register-applicant' %}" onclick="send-to-register" class="signUpCTA fs-button fs-button--recommended">
-                "Sign up as Applicant"
+                Sign up as Applicant
             </a>
             <br>
             <a href="{% url 'register-employer' %}" onclick="send-to-register" class="signUpCTA fs-button fs-button--recommended">
-                "Sign up as Employer"
+                Sign up as Employer
             </a>
+            <br>
             <a href="{% url 'userlogin' %}" onclick="send-to-login" class="linkCTA signInLink fs-button--minor">
-                "Already have an account? "
+                Already have an account?
                 <b>Sign in</b>
             </a>
         </div>
