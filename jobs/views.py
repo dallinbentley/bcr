@@ -1,6 +1,6 @@
 from django.shortcuts import render, HttpResponse
-from .models import JobListing, JobType, Skill
-from accounts.models import Employer
+from .models import JobListing, JobType, Skill, QuickApply
+from accounts.models import Employer, Applicant
 
 # Create your views here.
 def indexPageView(request):
@@ -111,5 +111,26 @@ def deleteJobListing(request, jobID):
     }
 
     return render(request, 'jobs.jobs.html', context)
+
+
+def quickApply(request,jobID, applicantID):
+    new_quickApply = QuickApply
+
+    applicant = Applicant.objects.get(id=applicantID)
+    joblisting = JobListing.objects.get(id=jobID)
+    matching_skills = 0
+
+    if applicant.skill_1 == joblisting.preferred_skill1 or applicant.skill_1 == joblisting.preferred_skill2 or applicant.skill_1 == joblisting.preferred_skill3:
+        matching_skills += 1
+
+    if  applicant.skill_2 == joblisting.preferred_skill1 or applicant.skill_2 == joblisting.preferred_skill2 or applicant.skill_2 == joblisting.preferred_skill3:
+        matching_skills += 1
+
+    if  applicant.skill_3 == joblisting.preferred_skill1 or applicant.skill_3 == joblisting.preferred_skill2 or applicant.skill_3 == joblisting.preferred_skill3:
+        matching_skills += 1
+
+    if  applicant.skill_2 == joblisting.preferred_skill1 or applicant.skill_2 == joblisting.preferred_skill2 or applicant.skill_2 == joblisting.preferred_skill3:
+        matching_skills += 1
+
 
 

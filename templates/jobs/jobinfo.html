@@ -20,5 +20,6 @@
                 </ul>
         </div>
 <button type="submit" onclick="location.href='{% url 'deletejob' jobID=Job.id %}'">Delete</button> 
+<button type="submit" onclick="location.href='{% url 'quickapply' jobID=Job.id applicantID=applicantID %}'">Quick Apply</button> 
 
 {% endblock %}
