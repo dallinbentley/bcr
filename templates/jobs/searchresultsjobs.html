@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<body>
+
+        <h2>Search Results:</h2>
+        <div class="cards">           
+          {% for sJob in search_jobs %}
+          <div class="card">
+            <a>{{ sJob.job_title }}
+                <div class="image-wrapper">
+                  <a href="{% url 'searchjob' jobID=sJob.id %}"></a>
+                </div>
+                <div class="overlay">
+                  <p>{{ sJob.job_title }}</p>
+                </div>
+            </a>
+          </div>
+          {% endfor %}
+        </div> 
+</body>
+{% endblock %}

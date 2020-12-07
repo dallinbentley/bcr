@@ -6,26 +6,6 @@
   src="https://code.jquery.com/jquery-3.3.1.min.js"
   integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
             crossorigin="anonymous"></script>
-    <script>
-    $(document).ready(function() {
-			// Show or hide the sticky footer button
-			$(window).scroll(function() {
-				if ($(this).scrollTop() > 200) {
-					$('.go-top').fadeIn(200);
-				} else {
-					$('.go-top').fadeOut(200);
-				}
-			});
-			
-			// Animate the scroll to top
-			$('.go-top').click(function(event) {
-				event.preventDefault();
-				
-				$('html, body').animate({scrollTop: 0}, 300);
-			})
-		});
-    
-    </script>
     <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
     <link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png">
@@ -48,42 +28,30 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <link rel="shortcut icon" type="image/png" href="{% static 'img/favicon.png' %}"/>
-    <title>Homepage</title>
+    <title>Welcome!</title>
 </head>
-<body>
-<header id="top">    
-<nav>
-    <ul class="main-nav">
-      <li><a class="active" href="{% url 'home' %}"><span class="hidden">Home</span><i class="fas fa-home"></i></a></li>
-      <li><a href="{% url 'jobs' %}">Jobs</a></li>
-      <li><a href="{% url 'employerlist' %}">Employers</a></li>
-      <li><a href="">Events</a></li>    
-    </ul>
-    <ul class="other-nav">
-        <div class="dropdown">
-            <li>
-              <a href="">
-                Account <i class="fas fa-angle-down"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              </a>
-            </li>
-            <div class="dropdown-content">
-                <li><a href="{% url 'view-applicant' %}">Profile</a></li>
-                <li><a href="">Saved Jobs</a></li>
-                <li><a href="">Applications</a></li>
-                <li><a href="{% url 'logout' %}">Logout</a></li>
-            </div>
+</body>
+
+<div class="vpDiv _findYourFamily">
+    <div class="centerWrapper">
+        <div class="valueProposition">
+            <h1 class="largeTitle">
+                Create Your FREE Account
+            </h1>
+            <a href="{% url 'register-applicant' %}" onclick="send-to-register" class="signUpCTA fs-button fs-button--recommended">
+                "Sign up as Applicant"
+            </a>
+            <br>
+            <a href="{% url 'register-employer' %}" onclick="send-to-register" class="signUpCTA fs-button fs-button--recommended">
+                "Sign up as Employer"
+            </a>
+            <a href="{% url 'userlogin' %}" onclick="send-to-login" class="linkCTA signInLink fs-button--minor">
+                "Already have an account? "
+                <b>Sign in</b>
+            </a>
         </div>
-      <li><a href=""><i class="fa fa-pinterest"></i></a></li>
-      <li><a href=""><i class="fa fa-envelope"></i></a></li>
-      <li><a href=""><i class="fa fa-facebook-square"></i></a></li>
-    </ul>
-  </nav> 
-</header>
-
-{% block content %}
-{% endblock %}
-
-<a class="go-top" href="#">Back to Top</a>
+    </div>
+</div>
 <footer>
     <p>&copy Black Cyber Recruiter 2020</p>
 </footer>

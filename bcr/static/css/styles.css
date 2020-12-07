@@ -55,17 +55,17 @@ main {
 Form Styles
 *************/
 /* Full-width input fields */
-input[type=text], input[type=password] {
-    width: 100%;
+input[type=text], input[type=password], input[type=tel], input[type=date], input[type=file], input[type=url] {
+    width: 30%;
     padding: 15px;
     margin: 5px 0 22px 0;
     display: inline-block;
     border: none;
-    background: var(--ash);
+    background: #e0dfdf;
   }
   
   /* Add a background color when the inputs get focus */
-  input[type=text]:focus, input[type=password]:focus {
+  input[type=text]:focus, input[type=password]:focus, input[type=tel]:focus, input[type=date]:focus, input[type=file]:focus {
     background-color: #ddd;
     outline: none;
   }
@@ -97,7 +97,7 @@ input {
     display: inline-block;
     text-align: start;
     appearance: textfield;
-    background-color: var(--v-slate);
+    background-color: white;
     -webkit-rtl-ordering: logical;
     cursor: text;
     margin: 0em;
@@ -113,11 +113,10 @@ input {
   .clearfix  button {
     background-color: var(--slate-blue);
     color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
+    padding: 5px 5px;
+    margin: 3px 0;
     border: none;
     cursor: pointer;
-    width: 100%;
     opacity: 0.9;
   }
   
@@ -126,9 +125,14 @@ input {
   }
   
   /* Extra styles for the cancel button */
-  .cancelbtn {
+  .clearfix .cancelbtn {
     padding: 14px 20px;
     background-color: var(--rust);
+  }
+
+  .clearfix .signupbtn {
+    padding: 14px 20px;
+    background-color: var(--slate-blue);
   }
   
   /* Float cancel and signup buttons and add an equal width */
@@ -158,7 +162,7 @@ input {
   
   /* Modal Content/Box */
   .modal-content {
-    background-color: var(--ash);
+    background-color: white;
     margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
     border: 1px solid var(--v-mountain);
     width: 80%; /* Could be more or less, depending on screen size */
@@ -198,7 +202,6 @@ input {
     background-color: var(--ash);
     text-align: center;
   }
-  
 
 /*************
 Input Styles
@@ -511,6 +514,283 @@ Text Highlight
     color: #73CECF;
 }
 
+
+/***********
+Index Styles
+************/
+@media screen and (max-height: 500px) and (max-width: 767px) {
+._findYourFamily {
+    background-position-y: -100px;
+    height: 514px;
+}
+}
+@media screen and (max-width: 767px) {
+._findYourFamily {
+    background-image: url(index-pic.jpg);
+    max-height: 514px;
+    background-color: #000;
+    background-position-y: -70px;
+    color: #fff;
+}
+}
+@media screen and (max-width: 991px) {
+._findYourFamily {
+    background-image: url(index-pic);
+    height: 514px;
+}
+}
+._findYourFamily {
+    background-image: linear-gradient(90deg,#d8d4cb 50%,#000 50%);
+    max-height: 600px;
+}
+.vpDiv {
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+user agent stylesheet
+div {
+    display: block;
+}
+
+
+@media screen and (max-width: 767px) {
+.centerWrapper {
+    text-align: center;
+}
+}
+.centerWrapper {
+    max-width: 1170px;
+    margin: auto;
+    height: 100%;
+    position: relative;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+}
+user agent stylesheet
+div {
+    display: block;
+}
+@media screen and (max-width: 767px) {
+._findYourFamily {
+    background-image: url(index-pic.jpg);
+    max-height: 514px;
+    background-color: #000;
+    background-position-y: -70px;
+    color: #fff;
+}
+}
+
+@media screen and (max-width: 767px) {
+._findYourFamily .valueProposition {
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    top: initial;
+    -webkit-transform: none;
+    -webkit-transform: none;
+    transform: none;
+    padding-bottom: 19px;
+}
+}
+@media screen and (max-width: 991px) {
+._findYourFamily .valueProposition {
+    width: 344px;
+    left: 33px;
+}
+}
+._findYourFamily .valueProposition {
+    width: 390px;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    left: 86px;
+    padding: 0px;
+}
+@media screen and (max-width: 767px) {
+.valueProposition {
+    text-align: center;
+    padding: 0;
+}
+}
+.valueProposition {
+    padding: 10px;
+    position: absolute;
+}
+user agent stylesheet
+div {
+    display: block;
+}
+@media screen and (max-width: 767px) {
+.centerWrapper {
+    text-align: center;
+}
+}
+@media screen and (max-width: 767px) {
+._findYourFamily {
+    background-image: url(index-pic.jpg);
+    max-height: 514px;
+    background-color: #000;
+    background-position-y: -70px;
+    color: #fff;
+}
+}
+
+@media screen and (max-width: 991px) {
+._findYourFamily .valueProposition .largeTitle {
+    font-size: 32px;
+    line-height: 46px;
+}
+}
+
+._findYourFamily .valueProposition .largeTitle {
+    font-size: 42px;
+    margin-bottom: 11px;
+    line-height: 46px;
+}
+@media screen and (max-width: 767px) {
+._findYourFamily h1 {
+    font-size: 32px;
+    line-height: 38px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+}
+
+@media screen and (max-width: 767px) {
+._findYourFamily h1, ._findYourFamily .fs-button--minor.signInLink {
+    color: #fff;
+}
+}
+
+@media screen and (max-width: 767px) {
+._findYourFamily .valueProposition .largeP {
+    font-size: 16px;
+    line-height: 23px;
+}
+}
+
+@media screen and (max-width: 767px) {
+.largeP, .largeTitle {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+}
+
+.largeP {
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+
+@media screen and (max-width: 991px) {
+._findYourFamily .valueProposition .fs-button {
+    margin-top: 17px;
+}
+}
+.fs-button--recommended:focus, .fs-button--recommended:visited {
+    color: #fff;
+}
+@media screen and (max-width: 767px) {
+._findYourFamily .fs-button {
+    padding-bottom: 18px;
+    padding-top: 18px;
+}
+}
+.fs-button.signUpCTA, .fs-button.activitiesCTA {
+    padding-bottom: 20px;
+    padding-top: 20px;
+    margin-bottom: 8px;
+}
+.fs-button.signUpCTA {
+    font-size: 16px;
+}
+.fs-button--recommended:focus, .fs-button--recommended:visited {
+    color: #fff;
+}
+
+@media screen and (max-width: 767px) {
+._findYourFamily h1, ._findYourFamily .fs-button--minor.signInLink {
+    color: #fff;
+}
+}
+.fs-button--minor:focus, .fs-button--minor:visited {
+    color: var(--slate-blue);
+}
+@media screen and (max-width: 767px) {
+.fs-button--minor.linkCTA {
+    margin-left: 30px;
+    margin-right: 30px;
+    display: block;
+}
+}
+@media screen and (max-width: 991px) {
+.fs-button--minor.linkCTA {
+    font-size: 16px;
+    line-height: 19px;
+}
+}
+.fs-button--minor:focus, .fs-button--minor:visited {
+    color: var(--slate-blue);
+}
+a:visited {
+    color: var(--camel);
+}
+a:visited {
+    color: var(--camel);
+}
+.fs-button--minor {
+    background-color: transparent;
+    color: var(--slate-blue);
+    border-color: transparent;
+}
+.signInLink {
+    font-size: 14px;
+}
+.linkCTA {
+    font-size: 18px;
+}
+.fs-button--minor {
+    background-color: transparent;
+    color: --slate-blue;
+    border-color: transparent;
+}
+a, a:hover, a:active, a:focus {
+    color: var(--camel);
+}
+a {
+    text-decoration: none;
+}
+a, a:hover, a:active, a:focus {
+    color: var(--slate-blue);
+}
+a {
+    text-decoration: none;
+}
+user agent stylesheet
+a:-webkit-any-link {
+    color: -webkit-link;
+    cursor: pointer;
+    text-decoration: underline;
+}
+@media screen and (max-width: 767px) {
+.valueProposition {
+    text-align: center;
+    padding: 0;
+}
+}
+
+@media screen and (max-width: 767px) {
+.centerWrapper {
+    text-align: center;
+}
+}
 
 /*************
 Media Queries

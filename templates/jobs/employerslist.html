@@ -1,7 +1,10 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-
--List of all Employers
-
+    <form name="form" method="get" action="{% url 'searchemployer' %}">
+    <label for="searchbar2">Search For An Employer:</label>
+    <input id="searchbar2" name='searchbar2' type="text" placeholder="Search Here">
+    <br>
+    <input type="submit" value="Search">
+    
 {% endblock %}

@@ -2,13 +2,11 @@
 {% load static %}
 {% block content %}
 
--quick apply
--form for user information
--upload resume
--login
--logout
--view account information
--update information and resume
--delete account
+<button href="{% url 'addlisting'%}">Quick Apply</button>
+<button href="{% url 'messaging'%}">Messages</button>
+<button href="{% url 'view-account-user'%}">View Account Information</button>
+<button href="{% url 'editlisting'%}">Update User Information</button>
+<button href="{% url 'deleteaccount-user'%}">Delete Account</button>
+<button href="{% url 'logout'%}">Logout</button>
 
 {% endblock %}

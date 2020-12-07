@@ -2,9 +2,25 @@
 {% load static %}
 {% block content %}
 
-<input type="sign-up" value="Sign up as Applicant">
-<input type="sign-up" value="Sign up as Employer">
-<input type="login" value="Applicant Login">
-<input type="login" value="Employer Login">
+<div class="vpDiv _findYourFamily">
+    <div class="centerWrapper">
+        <div class="valueProposition">
+            <h1 class="largeTitle">
+                Create Your FREE Account
+            </h1>
+            <a href="{% url 'register-applicant' %}" onclick="send-to-register" class="signUpCTA fs-button fs-button--recommended">
+                "Sign up as Applicant"
+            </a>
+            <br>
+            <a href="{% url 'register-employer' %}" onclick="send-to-register" class="signUpCTA fs-button fs-button--recommended">
+                "Sign up as Employer"
+            </a>
+            <a href="{% url 'userlogin' %}" onclick="send-to-login" class="linkCTA signInLink fs-button--minor">
+                "Already have an account? "
+                <b>Sign in</b>
+            </a>
+        </div>
+    </div>
+</div>
 
 {% endblock %}

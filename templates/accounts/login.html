@@ -1,10 +1,17 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-
+<div class="vpDiv _findYourFamily">
+    <div class="centerWrapper">
+        <div class="valueProposition">
+            <h1 class="largeTitle">
+                <h2>Login</h2>
+            </h1><button onclick="document.getElementById('id01').style.display='block'">Login</button>
 <div id="id01" class="modal">
+{% if message != ''%} {{message}} {% endif %}
   <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-  <form class="modal-content" action="/action_page.php" enctype="multipart/form-data">
+  <form class="modal-content" action="{%url 'login'%}" method='Post'>
+  {% csrf_token %}
     <div class="container">
       <h1>Login</h1>
       <p>Please enter your username and password.</p>
@@ -22,8 +29,11 @@
       <div class="clearfix">
         <button type="submit" class="loginbtn">Login</button>
         <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-        <button type="submit" class="signupbtn">Sign Up</button>
       </div>
+    </div>
+    
+    <div class="container signin">
+        <p>Need to sign up for an account? <a href="{% url 'userlogin' %}">Sign up here</a>.</p>
     </div>
   </form>
 </div>
@@ -39,4 +49,7 @@ window.onclick = function(event) {
   }
 }
 </script>
+</div>
+</div>
+</div>
 {% endblock %}
