@@ -152,7 +152,7 @@ input {
     width: 100%; /* Full width */
     height: 100%; /* Full height */
     overflow: auto; /* Enable scroll if needed */
-    background-color: var(--v-mountain);
+    background-color: var(--slate-blue);
     padding-top: 50px;
   }
   
@@ -160,7 +160,7 @@ input {
   .modal-content {
     background-color: var(--ash);
     margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
-    border: 1px solid var(--v-mountain);
+    border: 1px solid var(--slate-blue);
     width: 80%; /* Could be more or less, depending on screen size */
   }
   
@@ -356,7 +356,7 @@ img {
 }
 
 a {
-    color: #1569e0;
+    color: var(--slate-blue);
     text-decoration: none;
 }
 
@@ -425,6 +425,30 @@ footer {
 .go-top:hover {
     border-color: rgba(85, 85, 85, 0.2);
     background-color: var(--indigo);
+}
+
+
+/***************
+Job Cards Styles
+****************/
+.job-listings-cards {
+display: flex;
+    margin: 3rem var(--gutter) 10rem;
+}
+
+.job-listings-card {
+    margin: 3rem .75rem;
+    position: relative;
+    flex: 20%;
+}
+
+.job-listings-card a {
+    text-decoration: none;
+    color: var(--slate-blue);
+}
+
+a {
+    background-color: transparent;
 }
 
 
