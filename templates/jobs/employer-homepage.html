@@ -4,9 +4,9 @@
 <header id="top">    
 <nav>
     <ul class="main-nav">
-      <li><a class="active" href="{% url 'home' %}"><span class="hidden">Home</span><i class="fas fa-home"></i></a></li>
+      <li><a class="active" href="{% url 'employerhome' employerID=employerID %}"><span class="hidden">Home</span><i class="fas fa-home"></i></a></li>
       <li><a href="">My Listings</a></li>
-      <li><a href="">Add Listing</a></li>
+      <li><a href="{%url 'addlisting' employerID=employerID %}">Add Listing</a></li>
       <li><a href="">Events</a></li>    
     </ul>
     <ul class="other-nav">
@@ -17,7 +17,7 @@
               </a>
             </li>
             <div class="dropdown-content">
-                <li><a href="{% url 'view-applicant' %}">Profile</a></li>
+                <li><a href="{% url 'home' %}">Profile</a></li>
                 <li><a href="">Saved Jobs</a></li>
                 <li><a href="">Applications</a></li>
                 <li><a href="{% url 'home' %}">Logout</a></li>
@@ -40,7 +40,7 @@
                         <div class="style__flex___fCvpa style__justify-flex-end___229cl style__column___1Ye52 style__full-height___3AWW4">
                             <i class="fas fa-briefcase" class="style__illustration___2pK_r"></i>
                                 <h2 class="style__heading___34JlE style__heading___29i1Z style__large___15W-p">
-                                <a href="[job postings]">
+                                <a href="">
                                         My Listings
                                         <span class="style__arrow___2xTOf">&nbsp;→
                                         </span>
@@ -59,7 +59,7 @@
                         <div class="style__flex___fCvpa style__justify-flex-end___229cl style__column___1Ye52 style__full-height___3AWW4">
                             <i class="fas fa-city" class="style__illustration___2pK_r"></i>
                                 <h2 class="style__heading___34JlE style__heading___29i1Z style__large___15W-p">
-                                    <a href="[job postings]">
+                                    <a href="{%url 'addlisting' employerID=employerID %}">
                                         "Add Listing"
                                         <span class="style__arrow___2xTOf">&nbsp;→
                                         </span>
@@ -77,7 +77,7 @@
                         <div class="style__flex___fCvpa style__justify-flex-end___229cl style__column___1Ye52 style__full-height___3AWW4">
                             <i class="fas fa-globe" class="style__illustration___2pK_r"></i>
                                 <h2 class="style__heading___34JlE style__heading___29i1Z style__large___15W-p">
-                                    <a href="[job postings]">
+                                    <a href="">
                                         "Events"
                                         <span class="style__arrow___2xTOf">&nbsp;→
                                         </span>
@@ -105,9 +105,9 @@
 <h6>Company Email: {{employer.company_email}}</h6>
    
 </fieldset>
-<button value="Update Information" onclick="location.href='{% url 'home' %}'">Update Information</button>
+<br>
+<br>
+<a href="{% url 'home' %}" class="myButton">Update Information</a>
 
- {% comment %} {% for listing in joblistings%}
-<h3>{{listing.job_title}}</h3> 
-{%endfor%} {% endcomment %}
+
 {% endblock %}

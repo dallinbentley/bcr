@@ -31,7 +31,7 @@
   </nav> 
 </header>
 <body>
-    <form name="form" method="get" action="{% url 'searchemployer' %}">
+    <form name="form" method="get" action="{% url 'searchemployer' applicantID=applicantID %}">
     <label for="searchbar2">Search For An Employer:</label>
     <input id="searchbar2" name='searchbar2' type="text" placeholder="Search Here">
     <br>
@@ -39,8 +39,8 @@
 
     {% for company in employerlist%}
         <div class="job-listings-card">
-            <div class="image-wrapper"> 
-            <img src="" style="width:300px;height:300px">
+            <div class="image-wrapper">
+            <img src="{{company.company_image.url}}" style="width:300px;height:300px">
             </div>
             <h3>{{company.company_name}}</h3>
             <h5>{{company.company_address}}</h5>

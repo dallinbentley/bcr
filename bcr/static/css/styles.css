@@ -54,7 +54,7 @@ main {
 Form Styles
 *************/
 /* Full-width input fields */
-input[type=text], input[type=password], input[type=tel], input[type=date], input[type=file], input[type=url] {
+input[type=text], input[type=password], input[type=tel], input[type=date], input[type=file], input[type=url], input[type=number] {
     width: 30%;
     padding: 15px;
     margin: 5px 0 22px 0;
@@ -828,12 +828,7 @@ div {
 .fs-button--minor:focus, .fs-button--minor:visited {
     color: white;
 }
-a:visited {
-    color: var(--slate-blue);
-}
-a:visited {
-    color: var(--slate-blue);
-}
+
 .fs-button--minor {
     background-color: transparent;
     color: white;
@@ -880,6 +875,52 @@ a:-webkit-any-link {
     text-align: center;
 }
 }
+
+
+/***************
+Fieldset Styles
+***************/
+fieldset {
+    font: 1em Georgia, "Times New Roman", Times, serif;
+    background-image: no-repeat center top var(--slate-blue);
+    border: medium dotted #3B6281;
+    width: 700px;
+    height: 400px;
+    }
+    legend {
+    font-size: 1.3em;
+    border: medium dotted #60A4C1;
+    }
+    label {
+    font-weight: bold;
+    }
+
+
+
+/***************
+Button Styling
+**************/
+.myButton {
+    background-color: var(--slate-blue);
+	border-radius:8px;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size: 15px;
+	padding: 5px 5px;
+	text-decoration:none;
+}
+
+.myButton:hover {
+    background-color: var(--camel);
+    color: white;
+}
+.myButton:active {
+	position:relative;
+	top:1px;
+}
+
 
 /*************
 Media Queries

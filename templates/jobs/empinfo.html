@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
+{%block content%}
 {% load static %}
-{% block content %}
+
 <header id="top">    
 <nav>
     <ul class="main-nav">
@@ -29,21 +30,15 @@
     </ul>
   </nav> 
 </header>
-
 <body>
-
-<div class="job-listings-cards">
-{%for sEmp in search_employers %}
-    <div class="job-listings-card">
-        <a href={%url 'empinfo' applicantID=applicantID employerID=sEmp.id%}>  
-            <div class="image-wrapper"> 
-            <img src="{{sEmp.company_image.url}}" style="width:300px;height:300px">
-    </div>
-            <h3>{{sEmp.company_name}}</h3>
-        </a>
-</div>
-{% endfor %}
-
-    
-</body>
+    <h2>You Selected:</h2>
+        <div>           
+                <h4>{{ Employer.company_name }}</h4>
+                 <p id="email">Email: {{ Employer.company_email }}</p>
+                 <p id="url">URL: {{ Employer.company_url }}</p>
+                 <p>Address: {{Employer.company_address}}</p>
+                 <p>{{Employer.company_city}}, {{Employer.company_state}}, {{Employer.company_zip}}</p>
+                 
+        </div> 
+<h3> {% if message != '' %}{{message}}{% endif %}
 {% endblock %}

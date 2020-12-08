@@ -14,8 +14,13 @@ def applicantHomepageView(request, applicantID):
     }
     return render(request, 'jobs/applicant-homepage.html', context)
 
-def employerHomepageView(request):
-    return render(request, 'jobs/employer-homepage.html')
+def employerHomepageView(request, employerID):
+    employer = Employer.objects.get(id=employerID)
+    context = {
+        'employerID': employerID,
+        'employer': employer
+    }
+    return render(request, 'jobs/employer-homepage.html', context)
 
 def applicantUpdatePageView(request, applicantID):
 
@@ -71,6 +76,17 @@ def jobinfoPageView(request, jobID, applicantID):
     }
 
     return render(request, 'jobs/jobinfo.html', context)
+
+def empinfoPageView(request, applicantID, employerID):
+    emp = Employer.objects.get(id=employerID)
+
+    context = {
+        'Employer' : emp,
+        'applicantID' : applicantID,
+        'message' : ''
+    }
+
+    return render(request, 'jobs/empinfo.html', context)
 
 def availableJobsPageView(request, applicantID):
     data = JobListing.objects.all()
@@ -152,13 +168,14 @@ def searchJobs(request, applicantID):
     else:
         return HttpResponse("Not found")
 
-def searchEmployers(request):
+def searchEmployers(request, applicantID):
     searchString = request.GET['searchbar2']
     data = Employer.objects.filter(company_name=searchString)
 
     if data.count() > 0:
         context = {
-            "search_employers" : data
+            "search_employers" : data,
+            "applicantID" : applicantID
         }
         return render(request, 'jobs/searchresultsemployers.html', context)
     else:
@@ -212,6 +229,5 @@ def quickApply(request,jobID, applicantID):
     return render(request, 'jobs/jobinfo.html', context)
 
 
-def applicationsPageView(request, joblisting_id):
-    return render(request, 'accounts/applications.html', context)
+
 
