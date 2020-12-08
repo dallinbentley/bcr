@@ -248,7 +248,6 @@ Homepage Stuff
 }
 
 .style__heading___29i1Z {
-    color: white;
     margin: 0 0 .7em;
     line-height: 1.33em;
     font-weight: 500;
@@ -540,6 +539,13 @@ Text Highlight
 *************/
 ::selection {
     color: #73CECF;
+}
+
+/*******************
+Employer List Styles
+********************/
+.companyinfo {
+
 }
 
 
@@ -874,6 +880,24 @@ a:-webkit-any-link {
     text-align: center;
 }
 }
+
+
+/***************
+Fieldset Styles
+***************/
+fieldset {
+    font: 1em Georgia, "Times New Roman", Times, serif;
+    background: url(fieldset-pic.jpg) no-repeat center top;
+    border: medium dotted #3B6281;
+    color: white;
+    }
+    legend {
+    font-size: 1.3em;
+    border: medium dotted #60A4C1;
+    }
+    label {
+    font-weight: bold;
+    }
 
 /*************
 Media Queries

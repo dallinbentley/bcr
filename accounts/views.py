@@ -114,10 +114,10 @@ def login_request(request):
     if  applicant==None :
         try:
             employer = Employer.objects.get(username=username, password=password)
-            jobs = JobListing.objects.filter(company_ID=employer.id)
+            employerID = employer.id
             context = {
                 'employer': employer,
-                'joblistings': jobs
+                'employerID': employerID
             }
 
             return render(request, 'jobs/employer-homepage.html',context)

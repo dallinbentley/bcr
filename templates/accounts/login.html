@@ -18,10 +18,7 @@
 </head>
 
 <body>
-</h1><button onclick="document.getElementById('id01').style.display='block'">Login</button>
-<div id="id01" class="modal">
 {% if message != ''%} {{message}} {% endif %}
-  <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
   <form class="modal-content" action="{%url 'login'%}" method='Post'>
   {% csrf_token %}
     <div class="container">
@@ -51,11 +48,9 @@
     </div>
     
     <div class="container signin">
-        <p>Need to sign up for an account? <a href="{% url 'home' %}">Sign up here</a>.</p>
+        <p>Need to create an account? <a href="{% url 'home' %}">Sign up here</a>.</p>
     </div>
   </form>
-</div>
-
 <script>
 // Get the modal
 var modal = document.getElementById('id01');
@@ -67,7 +62,4 @@ window.onclick = function(event) {
   }
 }
 </script>
-</div>
-</div>
-</div>
 </body>

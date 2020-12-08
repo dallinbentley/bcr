@@ -80,13 +80,18 @@ def availableJobsPageView(request, applicantID):
     }
     return render(request, 'jobs/jobs.html', context)
 
-def addJobListingPageView(request):
-    return render(request, 'jobs/addjoblisting.html')
+def addJobListingPageView(request, employerID):
+    context={
+        'employerID': employerID
+    }
+    return render(request, 'jobs/addjoblisting.html', context)
 
-def addjobFunc(request):
+def addjobFunc(request, employerID):
     if request.method == 'Post':
         new_JobListing = JobListing()
 
+        new_company = JobListing.objects.get(company_ID=employerID)
+        new_JobListing.company_ID = new_company
         new_JobListing.job_title = request.POST.get('jobtitle')
         new_jobtype = JobType.objects.get(job_type_description=request.POST.get('jobtype'))
         new_JobListing.wage= request.POST.get('wage')
@@ -134,21 +139,22 @@ def employersListPageView(request, applicantID):
     }
     return render(request, 'jobs/employerslist.html', context)
 
-def searchJobs(request):
-    searchString = request.GET['searchbar'].lower()
-    data = JobListing.objects.filter(job_title=searchString).lower()
+def searchJobs(request, applicantID):
+    searchString = request.GET['searchbar']
+    data = JobListing.objects.filter(job_title=searchString)
 
     if data.count() > 0:
         context = {
-            "search_jobs" : data
+            "search_jobs" : data,
+            "applicantID": applicantID
         }
         return render(request, 'jobs/searchresultsjobs.html', context)
     else:
         return HttpResponse("Not found")
 
 def searchEmployers(request):
-    searchString = request.GET['searchbar2'].lower()
-    data = Employer.objects.filter(company_name=searchString).lower()
+    searchString = request.GET['searchbar2']
+    data = Employer.objects.filter(company_name=searchString)
 
     if data.count() > 0:
         context = {

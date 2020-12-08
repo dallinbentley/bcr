@@ -1,47 +1,11 @@
+{% extends 'base.html' %}
+{%block content%}
 {% load static %}
-<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <script
-  src="https://code.jquery.com/jquery-3.3.1.min.js"
-  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-            crossorigin="anonymous"></script>
-    <script>
-    $(document).ready(function() {
-			// Show or hide the sticky footer button
-			$(window).scroll(function() {
-				if ($(this).scrollTop() > 200) {
-					$('.go-top').fadeIn(200);
-				} else {
-					$('.go-top').fadeOut(200);
-				}
-			});
-			
-			// Animate the scroll to top
-			$('.go-top').click(function(event) {
-				event.preventDefault();
-				
-				$('html, body').animate({scrollTop: 0}, 300);
-			})
-		});
-    
-    </script>
-    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'img/favicon-16x16.png' %}">
-    <link rel="manifest" href="/manifest.json">
-    <meta name="msapplication-TileColor" content="#ffffff">
-    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
-    <meta name="theme-color" content="#ffffff">
-    <link href="https://fonts.googleapis.com/css?family=Domine|Roboto" rel="stylesheet">
-    <link href="{% static 'css/styles.css' %}" rel="stylesheet">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-
-    <title>Homepage</title>
-</head>
-<body>
 <header id="top">    
 <nav>
     <ul class="main-nav">
       <li><a class="active" href="{% url 'applicanthome' applicantID=applicantID %}"><span class="hidden">Home</span><i class="fas fa-home"></i></a></li>
-      <li><a href= "{%url 'jobs' applicantID=applicantID%}">Jobs</a></li>
+      <li><a href="{%url 'jobs' applicantID=applicantID%}">Jobs</a></li>
       <li><a href="{% url 'employerlist' applicantID=applicantID %}">Employers</a></li>
       <li><a href="">Events</a></li>    
     </ul>
@@ -53,9 +17,9 @@
               </a>
             </li>
             <div class="dropdown-content">
-                <li><a href="{% url 'view-applicant' %}">Profile</a></li>
+                <li><a href="{% url 'applicant-update' applicantID=applicantID %}">Update Profile</a></li>
                 <li><a href="">Saved Jobs</a></li>
-                <li><a href="">Applications</a></li>
+                <li><a href="">My Applications</a></li>
                 <li><a href="{% url 'home' %}">Logout</a></li>
             </div>
         </div>
@@ -81,4 +45,4 @@
     </div>
     {% endfor %}
 </div>
-</body>
+{% endblock %}

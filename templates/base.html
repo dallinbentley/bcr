@@ -39,34 +39,6 @@
     <title>Homepage</title>
 </head>
 <body>
-<header id="top">    
-<nav>
-    <ul class="main-nav">
-      <li><a class="active" href="{% url 'home' %}"><span class="hidden">Home</span><i class="fas fa-home"></i></a></li>
-      <li><a>Jobs</a></li>
-      <li><a href=>Employers</a></li>
-      <li><a href="">Events</a></li>    
-    </ul>
-    <ul class="other-nav">
-        <div class="dropdown">
-            <li>
-              <a href="">
-                Account <i class="fas fa-angle-down"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              </a>
-            </li>
-            <div class="dropdown-content">
-                <li><a href="{% url 'view-applicant' %}">Profile</a></li>
-                <li><a href="">Saved Jobs</a></li>
-                <li><a href="">Applications</a></li>
-                <li><a href="{% url 'home' %}">Logout</a></li>
-            </div>
-        </div>
-      <li><a href=""><i class="fa fa-pinterest"></i></a></li>
-      <li><a href=""><i class="fa fa-envelope"></i></a></li>
-      <li><a href=""><i class="fa fa-facebook-square"></i></a></li>
-    </ul>
-  </nav> 
-</header>
 
 {% block content %}
 {% endblock %}

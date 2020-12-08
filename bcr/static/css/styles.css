@@ -248,7 +248,6 @@ Homepage Stuff
 }
 
 .style__heading___29i1Z {
-    color: white;
     margin: 0 0 .7em;
     line-height: 1.33em;
     font-weight: 500;
@@ -540,6 +539,13 @@ Text Highlight
 *************/
 ::selection {
     color: #73CECF;
+}
+
+/*******************
+Employer List Styles
+********************/
+.companyinfo {
+
 }
 
 

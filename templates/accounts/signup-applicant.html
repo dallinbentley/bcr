@@ -1,11 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-
-<h2>Applicant Sign Up</h2>
-<button onclick="document.getElementById('id01').style.display='block'">Sign Up</button>
-<div id="id01" class="modal">
-  <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
   <form class="modal-content" action="{% url 'registered-applicant'%}" method='Post' enctype="multipart/form-data">
   {% csrf_token %}
     <div class="container">
@@ -112,12 +107,6 @@
 
       <br>
       <br>
-
-      <label for="psw-repeat"><b>Confirm Password:</b></label>
-      <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
-
-      <br>
-      <br>
       
       <label>
         <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
@@ -134,7 +123,6 @@
     </div>
 
   </form>
-</div>
 
 <script>
 // Get the modal
