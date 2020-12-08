@@ -1,0 +1,165 @@
+
+{% load static %}
+<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+            crossorigin="anonymous"></script>
+    <script>
+    $(document).ready(function() {
+			// Show or hide the sticky footer button
+			$(window).scroll(function() {
+				if ($(this).scrollTop() > 200) {
+					$('.go-top').fadeIn(200);
+				} else {
+					$('.go-top').fadeOut(200);
+				}
+			});
+			
+			// Animate the scroll to top
+			$('.go-top').click(function(event) {
+				event.preventDefault();
+				
+				$('html, body').animate({scrollTop: 0}, 300);
+			})
+		});
+    
+    </script>
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'img/favicon-16x16.png' %}">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+    <link href="https://fonts.googleapis.com/css?family=Domine|Roboto" rel="stylesheet">
+    <link href="{% static 'css/styles.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+    <title>Homepage</title>
+</head>
+<body>
+<header id="top">    
+<nav>
+    <ul class="main-nav">
+      <li><a class="active" href="{% url 'applicanthome' applicantID=applicant.id %}"><span class="hidden">Home</span><i class="fas fa-home"></i></a></li>
+      <li><a href="{%url 'jobs' applicantID=applicantID%}">Jobs</a></li>
+      <li><a href="{% url 'employerlist' applicantID=applicantID %}">Employers</a></li>
+      <li><a href="">Events</a></li>    
+    </ul>
+    <ul class="other-nav">
+        <div class="dropdown">
+            <li>
+              <a href="">
+                Account <i class="fas fa-angle-down"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              </a>
+            </li>
+            <div class="dropdown-content">
+                <li><a href="{% url 'view-applicant' %}">Profile</a></li>
+                <li><a href="">Saved Jobs</a></li>
+                <li><a href="">Applications</a></li>
+                <li><a href="{% url 'logout' %}">Logout</a></li>
+            </div>
+        </div>
+      <li><a href=""><i class="fa fa-pinterest"></i></a></li>
+      <li><a href=""><i class="fa fa-envelope"></i></a></li>
+      <li><a href=""><i class="fa fa-facebook-square"></i></a></li>
+    </ul>
+  </nav> 
+</header>
+
+<body>
+<form class="modal-content" action="{% url 'applicant-updated' applicantID=applicantID%}" method='Post' enctype="multipart/form-data">
+{% csrf_token %}
+<div class="container">
+      <h1>Update Your Account Here</h1>
+      <hr>
+      <label for="firstname"><b>First Name:</b></label>
+      <input type="text" value="{{applicant.first_name}}" name="firstname" id="firstname" required>
+
+      <br>
+      <br>
+      
+      <label for="lastname"><b>Last Name:</b></label>
+      <input type="text" value="{{applicant.last_name}}" name="lastname" id="lastname" required>
+
+      <br>
+      <br>
+
+      <label for="email"><b>Email:</b></label>
+      <input type="text" value="{{applicant.email}}" name="email" id="email" required>
+      
+      <br>
+      <br>
+
+      <label for="phone"><b>Phone Number:</b></label>
+      <input type="tel" value="{{applicant.phone}}" name="phone" id="phone" required>
+      <br>
+      <br>
+
+      <label for="birthdate"><b>Birthdate:</b></label>
+      <input type="date" value="{{applicant.birthdate}}" name="birthdate" id="birthdate" required>
+
+      <br>
+      <br>
+
+      <label for="resume"><b>Resume Upload:</b></label>
+      <input type="file" value="{{applicant.resume.name}}" name="resume" id="resume" required>
+
+      <br>
+      <br>
+
+      <label for='skill1'> Choose a Skill </label>
+      <select name="skill1">
+      {% for skill in skills%}<option value="{{skill.skill_description}}">{{skill.skill_description}}
+      </option>
+      {% endfor %}
+      </select>
+      
+      <br>
+      <br>
+
+      <label for='skill2'> Choose a Skill </label>
+      <select name="skill2">
+      {% for skill in skills%}
+      <option value="{{skill.skill_description}}">
+      {{skill.skill_description}}
+      </option>
+      {% endfor %}
+      </select>
+
+      <br>
+      <br>
+
+      <label for='skill3'> Choose a Skill </label>
+      <select name="skill3">
+      {% for skill in skills%}
+      <option value="{{skill.skill_description}}">
+      {{skill.skill_description}}
+      </option>
+      {% endfor %}
+      </select>
+
+      <br>
+      <br>
+
+      <label for='skill4'> Choose a Skill </label>
+      <select name="skill4">
+      {% for skill in skills%}
+      <option value="{{skill.skill_description}}">
+      {{skill.skill_description}}
+      </option>
+      {% endfor %}</select>
+
+      <br>
+      <br>
+
+      <label for='skill5'> Choose a Skill </label>
+      <select name="skill5">
+      {% for skill in skills%}
+      <option value="{{skill.skill_description}}">{{skill.skill_description}}</option>
+      {% endfor %}</select>
+
+      <button type="submit" class="signupbtn">Update</button>
+</form>
+</body>
+

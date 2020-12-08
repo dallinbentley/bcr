@@ -31,7 +31,7 @@
                         <div class="style__flex___fCvpa style__justify-flex-end___229cl style__column___1Ye52 style__full-height___3AWW4">
                             <i class="fas fa-building" style="height=5px, width=5px" class="style__illustration___2pK_r"></i>
                                 <h2 class="style__heading___34JlE style__heading___29i1Z style__large___15W-p">
-                                    <a href="{%url 'employerlist'%}">
+                                    <a>
                                         "Employers"
                                         <span class="style__arrow___2xTOf">&nbsp;→
                                         </span>
@@ -90,4 +90,7 @@
     <input id="searchbar" name='searchbar' type="text" placeholder="Search Here">
     <br>
     <input type="submit" value="Search">
+{% for listing in joblistings%}
+<h3>{{listing.job_title}}</h3>
+{%endfor%}
 {% endblock %}

@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import login_request, logout_request, signupApplicantPageView, signupEmployerPageView, applicationsPageView, deleteAccountPageView, viewAccountApplicantPageView, viewAccountEmployerPageView, loginPageView, signupEmployer, signupApplicant, deleteAccount
+from .views import login_request, logout_request, signupApplicantPageView, signupEmployerPageView, deleteAccountPageView, viewAccountApplicantPageView, viewAccountEmployerPageView, loginPageView, signupEmployer, signupApplicant, deleteAccount
 
 from django.conf import settings
 from django.conf.urls.static import static
@@ -12,7 +12,6 @@ urlpatterns = [
     path("registered-applicant", signupApplicant, name='registered-applicant'),
     path("register-employer/", signupEmployerPageView, name="register-employer"),
     path("registered-employer", signupEmployer, name="registered-employer"),
-    path("applications/", applicationsPageView, name="applications"),
     path("delete/", deleteAccountPageView, name="delete"),
     path("view-applicant/", viewAccountApplicantPageView, name="view-applicant"),
     path("view-employer/", viewAccountEmployerPageView, name="view-employer"),

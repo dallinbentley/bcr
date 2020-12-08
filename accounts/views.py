@@ -4,12 +4,9 @@ from . import views
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from .forms import NewUserForm
 from .models import Applicant, Employer
-from jobs.models import Skill
+from jobs.models import Skill, JobListing
 
 # Create your views here.
-
-def applicationsPageView(request):
-    return render(request, 'accounts/applications.html')
 
 def signupApplicantPageView(request):
     skills = Skill.objects.all()
@@ -45,10 +42,13 @@ def signupApplicant(request):
 
         new_applicant.save()
 
+        applicantID = new_applicant.id
+        
         context = {
-        'applicant': new_applicant
+        'applicant': new_applicant,
+        'applicantID': applicantID
         }
-    return render(request, 'jobs/applicant-homepage.html', context)
+        return render(request, 'jobs/applicant-homepage.html', context)
     
 def signupEmployerPageView(request):
     return render(request, 'accounts/signup-employer.html')
@@ -99,8 +99,10 @@ def login_request(request):
 
     try:
         applicant = Applicant.objects.get(username=username, password=password)
+        applicantid = applicant.id
 
         context = {
+            'applicantID': applicantid,
             'applicant': applicant
         }
 
@@ -112,9 +114,10 @@ def login_request(request):
     if  applicant==None :
         try:
             employer = Employer.objects.get(username=username, password=password)
-
+            jobs = JobListing.objects.filter(company_ID=employer.id)
             context = {
-                'employer': employer
+                'employer': employer,
+                'joblistings': jobs
             }
 
             return render(request, 'jobs/employer-homepage.html',context)

@@ -38,5 +38,5 @@ class QuickApply(models.Model):
     matching_skills = models.SmallIntegerField
 
     def __str__(self):
-        (self.job_listing.job_title + ', '+ self.applicant.first_name + ' ' + self.applicant.last_name + ', ' + self.matching_skills)
+      return  (self.job_listing.job_title + ', '+ self.applicant.first_name + ' ' + self.applicant.last_name + ', ' + str(self.matching_skills))
 
