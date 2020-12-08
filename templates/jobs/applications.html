@@ -1,4 +1,62 @@
+{% extends 'base.html' %}
 {% load static %}
-<body>
+{% block content %}
+<header id="top">    
+<nav>
+    <ul class="main-nav">
+      <li><a class="active" href="{% url 'employerhome' employerID=employerID %}"><span class="hidden">Home</span><i class="fas fa-home"></i></a></li>
+      <li><a href="{%url 'mylistings' employerID=employerID%}">My Listings</a></li>
+      <li><a href="{%url 'addlisting' employerID=employerID %}">Add Listing</a></li>
+      <li><a href="">Events</a></li>    
+    </ul>
+    <ul class="other-nav">
+        <div class="dropdown">
+            <li>
+              <a href="">
+                Account <i class="fas fa-angle-down"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              </a>
+            </li>
+            <div class="dropdown-content">
+                <li><a href="{% url 'home' %}">Profile</a></li>
+                <li><a href="">Saved Jobs</a></li>
+                <li><a href="">Applications</a></li>
+                <li><a href="{% url 'home' %}">Logout</a></li>
+            </div>
+        </div>
+      <li><a href=""><i class="fa fa-pinterest"></i></a></li>
+      <li><a href=""><i class="fa fa-envelope"></i></a></li>
+      <li><a href=""><i class="fa fa-facebook-square"></i></a></li>
+    </ul>
+  </nav> 
+</header>
 
-</body>
+<table id="applicant-info-table">
+  <tr>
+    <th>Name</th>
+    <th># Of Matching Skills</th>
+    <th>Resume</th>
+    <th>Phone</th>
+    <th>Email</th>
+    <th>Action: Accept, Pending, Reject</th>
+    <th>Similar Applicants</th>
+  </tr>
+  <tr>
+  {% for application in quick_apply %}
+    <td>{{application.applicant.last_name}}, {{application.applicant.first_name}}</td>
+    <td>{{application.matching_skills}}</td>
+    <td><a href={{application.applicant.resume.url}}>Resume</a></td>
+    <td>{{application.applicant.phone}}</td>
+    <td>{{application.applicant.email}}</td>
+    <td>
+    <button type="button" class="btn btn-primary"><i class="far fa-check-square"></i></button>
+    <button type="button" class="btn btn-success"><i class="fas fa-eye"></i></button>
+    <button type="button" class="btn btn-danger"><i class="far fa-user-times"></i></button>
+    </td>
+    <td>
+    <button type="submit" class="signupbtn" onclick="location.href='{% url 'similarrecommender' employerID=employerID applicantID=application.applicant.id %}'">Similar Applicants</button>
+    </td>
+  </tr>
+  {% endfor %}
+</table>
+{% endblock %}
+

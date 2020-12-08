@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+{%block content%}
+{% load static %}
+<header id="top">    
+<nav>
+    <ul class="main-nav">
+      <li><a class="active" href="{% url 'employerhome' employerID=employerID %}"><span class="hidden">Home</span><i class="fas fa-home"></i></a></li>
+      <li><a href="">My Listings</a></li>
+      <li><a href="{%url 'addlisting' employerID=employerID %}">Add Listing</a></li>
+      <li><a href="">Events</a></li>    
+    </ul>
+    <ul class="other-nav">
+        <div class="dropdown">
+            <li>
+              <a href="">
+                Account <i class="fas fa-angle-down"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              </a>
+            </li>
+            <div class="dropdown-content">
+                <li><a href="{% url 'home' %}">Profile</a></li>
+                <li><a href="">Saved Jobs</a></li>
+                <li><a href="">Applications</a></li>
+                <li><a href="{% url 'home' %}">Logout</a></li>
+            </div>
+        </div>
+      <li><a href=""><i class="fa fa-pinterest"></i></a></li>
+      <li><a href=""><i class="fa fa-envelope"></i></a></li>
+      <li><a href=""><i class="fa fa-facebook-square"></i></a></li>
+    </ul>
+  </nav> 
+</header>
+
+<body>
+<form class="modal-content" action="{% url 'employerupdate' employerID=employerID %}" method='Post' enctype="multipart/form-data">
+{% csrf_token %}
+<div class="container">
+      <h1>Update Your Account Here</h1>
+      <hr>
+      <label for="companyname"><b>Company Name:</b></label>
+      <input type="text" value="{{employer.company_name}}" name="companyname" id="companyname" required>
+
+      <br>
+      <br>
+      
+      <label for="companyaddress"><b>Street Address:</b></label>
+      <input type="text" value="{{employer.company_address}}" name="companyaddress" id="companyaddress" required>
+
+      <br>
+      <br>
+
+      <label for="companycity"><b>City:</b></label>
+      <input type="text" value="{{employer.company_city}}" name="companycity" id="companycity" required>
+      
+      <br>
+      <br>
+
+      <label for="companystate"><b>State:</b></label>
+      <input type="tel" value="{{employer.company_state}}" name="companystate" id="companystate" required>
+      <br>
+      <br>
+
+      <label for="companyzip"><b>Zip:</b></label>
+      <input type="text" value="{{employer.company_zip}}" name="companyzip" id="companyzip" required>
+
+      <br>
+      <br>
+
+      <label for="companyurl"><b>Company URL:</b></label>
+      <input type="text" value="{{employer.company_url}}" name="companyurl" id="companyurl" required>
+
+      <br>
+      <br>
+      
+      <label for="companyemail"><b>Company Email:</b></label>
+      <input type="text" value="{{employer.company_email}}" name="companyemail" id="companyemail" required>
+
+      <br>
+      <br>
+
+      <label for="company_image"><b>Company Image Upload:</b></label>
+      <input type="file" placeholder="Upload Company Image" name="image" id="image" required>
+
+      <br>
+      <br>
+
+      <button type="submit" class="signupbtn">Update</button>
+
+      <br>
+</form>
+{% endblock %}

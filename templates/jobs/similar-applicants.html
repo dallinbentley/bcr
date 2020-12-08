@@ -29,20 +29,23 @@
     </ul>
   </nav> 
 </header>
+
 <table id="applicant-info-table">
   <tr>
-    <th>Job Title</th>
-    <th>Wage</th>
-    <th>Salary</th>
-    <th>Applicants</th>
+    <th>Name</th>
+    <th>Resume</th>
+    <th>Phone</th>
+    <th>Email</th> 
   </tr>
-  {% for listing in joblistings%}
+  {% for user in users%}
   <tr>
-    <td>{{listing.job_title}}</td>
-    <td>{{listing.wage}}</td>
-    <td>{{listing.salary}}</td>
-    <td><a href={% url 'applications' employerID=employerID listingID=listing.id %}>See Applicants</a></td>
+    <td>{{user.first_name}} {{user.last_name}}</td>
+    <td><a href={{user.resume.url}}>resume</a></td>
+    <td>{{user.phone}}</td>
+    <td>{{user.email}}</td> 
   </tr>
-  {% endfor %}
+  {%endfor%}
 </table>
+
 {% endblock %}
+

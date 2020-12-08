@@ -14,7 +14,6 @@ urlpatterns = [
     path("registered-employer", signupEmployer, name="registered-employer"),
     path("delete/", deleteAccountPageView, name="delete"),
     path("view-applicant/", viewAccountApplicantPageView, name="view-applicant"),
-    path("view-employer/", viewAccountEmployerPageView, name="view-employer"),
     path('delete-account/<int:employerID>', deleteAccount, name='deleteaccount')
 ]
 

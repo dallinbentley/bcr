@@ -46,6 +46,7 @@ def applicantUpdate(request, applicantID):
         update_applicant.phone = request.POST.get('phone')
 
         update_applicant.resume = request.FILES['resume']
+
         update_skill1 = Skill.objects.get(skill_description=request.POST.get('skill1'))
         update_skill2 = Skill.objects.get(skill_description=request.POST.get('skill2'))
         update_skill3 = Skill.objects.get(skill_description=request.POST.get('skill3'))
@@ -68,11 +69,23 @@ def applicantUpdate(request, applicantID):
         return render(request, 'jobs/applicant-homepage.html', context)
 
 def jobinfoPageView(request, jobID, applicantID):
-    currentjob = JobListing.objects.get(id=jobID)
+    applicant = Applicant.objects.get(id=applicantID)
+    joblisting = JobListing.objects.get(id=jobID)
+    matching_skills = 0
+
+    if joblisting.preferred_skill1 == applicant.skill_1 or joblisting.preferred_skill1 == applicant.skill_2 or joblisting.preferred_skill1 == applicant.skill_3 or joblisting.preferred_skill1 == applicant.skill_4 or joblisting.preferred_skill1 == applicant.skill_5:
+        matching_skills += 1
+
+    if joblisting.preferred_skill2 == applicant.skill_1 or joblisting.preferred_skill2 == applicant.skill_2 or joblisting.preferred_skill2 == applicant.skill_3 or joblisting.preferred_skill2 == applicant.skill_4 or joblisting.preferred_skill2 == applicant.skill_5:
+        matching_skills += 1
+
+    if joblisting.preferred_skill3 == applicant.skill_1 or joblisting.preferred_skill3 == applicant.skill_2 or joblisting.preferred_skill3 == applicant.skill_3 or joblisting.preferred_skill3 == applicant.skill_4 or joblisting.preferred_skill3 == applicant.skill_5:
+        matching_skills += 1
     context={
-        'Job':currentjob,
+        'Job':joblisting,
         'applicantID':applicantID,
-        'message': ''
+        'message': '',
+        'matching_skills': matching_skills
     }
 
     return render(request, 'jobs/jobinfo.html', context)
@@ -97,21 +110,31 @@ def availableJobsPageView(request, applicantID):
     return render(request, 'jobs/jobs.html', context)
 
 def addJobListingPageView(request, employerID):
+    skills = Skill.objects.all()
+    jobtypes = JobType.objects.all()
     context={
-        'employerID': employerID
+        'employerID': employerID,
+        'skills': skills,
+        'jobtypes': jobtypes
     }
     return render(request, 'jobs/addjoblisting.html', context)
 
 def addjobFunc(request, employerID):
-    if request.method == 'Post':
+    if request.method == 'POST':
         new_JobListing = JobListing()
 
-        new_company = JobListing.objects.get(company_ID=employerID)
+        new_company = Employer.objects.get(id= employerID)
         new_JobListing.company_ID = new_company
         new_JobListing.job_title = request.POST.get('jobtitle')
         new_jobtype = JobType.objects.get(job_type_description=request.POST.get('jobtype'))
-        new_JobListing.wage= request.POST.get('wage')
-        new_JobListing.salary = request.POST.get('salary')
+        if request.POST.get('wage') == '':
+            new_JobListing.wage = None
+        else:
+            new_JobListing.wage= request.POST.get('wage')
+        if request.POST.get('salary') == '':
+            new_JobListing.salary = None   
+        else:
+            new_JobListing.salary = request.POST.get('salary')
         new_JobListing.job_description = request.POST.get('jobdescription')
         new_skill1 = Skill.objects.get(skill_description=request.POST.get('preferredskill1'))
         new_skill2 = Skill.objects.get(skill_description=request.POST.get('preferredskill2'))
@@ -123,6 +146,14 @@ def addjobFunc(request, employerID):
         new_JobListing.preferred_skill3 = new_skill3
         
         new_JobListing.save()
+
+        employer = Employer.objects.get(id=employerID)
+        context = {
+        'employerID': employerID,
+        'employer': employer
+        }
+
+        return render(request, 'jobs/employer-homepage.html', context)
 
 def updateJobListingPageView(request, jobID):
     return render(request, 'jobs/updatejoblisting.html')
@@ -199,20 +230,15 @@ def quickApply(request,jobID, applicantID):
     joblisting = JobListing.objects.get(id=jobID)
     matching_skills = 0
 
-    if applicant.skill_1 == joblisting.preferred_skill1 or applicant.skill_1 == joblisting.preferred_skill2 or applicant.skill_1 == joblisting.preferred_skill3:
+    if joblisting.preferred_skill1 == applicant.skill_1 or joblisting.preferred_skill1 == applicant.skill_2 or joblisting.preferred_skill1 == applicant.skill_3 or joblisting.preferred_skill1 == applicant.skill_4 or joblisting.preferred_skill1 == applicant.skill_5:
         matching_skills += 1
 
-    if  applicant.skill_2 == joblisting.preferred_skill1 or applicant.skill_2 == joblisting.preferred_skill2 or applicant.skill_2 == joblisting.preferred_skill3:
+    if joblisting.preferred_skill2 == applicant.skill_1 or joblisting.preferred_skill2 == applicant.skill_2 or joblisting.preferred_skill2 == applicant.skill_3 or joblisting.preferred_skill2 == applicant.skill_4 or joblisting.preferred_skill2 == applicant.skill_5:
         matching_skills += 1
 
-    if  applicant.skill_3 == joblisting.preferred_skill1 or applicant.skill_3 == joblisting.preferred_skill2 or applicant.skill_3 == joblisting.preferred_skill3:
+    if joblisting.preferred_skill3 == applicant.skill_1 or joblisting.preferred_skill3 == applicant.skill_2 or joblisting.preferred_skill3 == applicant.skill_3 or joblisting.preferred_skill3 == applicant.skill_4 or joblisting.preferred_skill3 == applicant.skill_5:
         matching_skills += 1
 
-    if  applicant.skill_4 == joblisting.preferred_skill1 or applicant.skill_4 == joblisting.preferred_skill2 or applicant.skill_4 == joblisting.preferred_skill3:
-        matching_skills += 1
-
-    if  applicant.skill_5 == joblisting.preferred_skill1 or applicant.skill_5 == joblisting.preferred_skill2 or applicant.skill_5 == joblisting.preferred_skill3:
-        matching_skills += 1
 
     new_quickApply.matching_skills = matching_skills
     new_quickApply.applicant = applicant
@@ -223,11 +249,122 @@ def quickApply(request,jobID, applicantID):
     context={
         'Job':joblisting,
         'applicantID':applicantID,
-        'message': 'You Have Successfully Applied!'
+        'message': 'You Have Successfully Applied!',
+        'matching_skills': matching_skills
     }
 
     return render(request, 'jobs/jobinfo.html', context)
 
 
+def myListingPageView(request, employerID):
+    joblistings = JobListing.objects.filter(company_ID=employerID)
+
+    context={
+        'joblistings': joblistings,
+        'employerID': employerID
+    }
+    return render(request, 'jobs/mylistings.html', context)
 
 
+def viewAccountEmployerPageView(request, employerID):
+    employer = Employer.objects.get(id=employerID)
+
+    context = {
+        'employer':employer,
+        'employerID':employerID
+    }
+    
+    return render(request, 'jobs/view-account-employer.html', context)
+
+
+def employerUpdate(request, employerID):
+    if request.method == 'POST':
+        update_employer = Employer.objects.get(id=employerID)
+
+        update_employer.company_name = request.POST.get('companyname')
+        update_employer.company_address = request.POST.get('companyaddress')
+        update_employer.company_city = request.POST.get('companycity')
+        update_employer.company_state = request.POST.get('companystate')
+        update_employer.company_zip = request.POST.get('companyzip')
+        update_employer.company_zip = request.POST.get('companyzip')
+        update_employer.company_url = request.POST.get('companyurl')
+        update_employer.company_email = request.POST.get('companyemail')
+
+        update_employer.company_image = request.FILES['image']
+
+        update_employer.save()
+
+        context = {
+        'employer': update_employer,
+        'employerID': employerID
+        }
+
+        return render(request, 'jobs/employer-homepage.html', context)
+
+def applicationsPageView(request, employerID, listingID):
+    employer = Employer.objects.get(id=employerID)
+    listing = JobListing.objects.get(id=listingID)
+    data = JobListing.objects.filter(id=listing.id)
+    quick_apply = QuickApply.objects.filter(job_listing=listingID)
+    context = {
+        'quick_apply' : quick_apply,
+        'listing' : data,
+        'employerID' : employer.id
+    }
+
+    return render(request, 'jobs/applications.html', context)
+
+def similarApplicantsRecommender(request, employerID, applicantID):
+    #related users API
+    import urllib
+    # If you are using Python 3+, import urllib instead of urllib2
+
+    import json 
+
+
+    data =  {
+
+            "Inputs": {
+
+                    "input1":
+                    {
+                        "ColumnNames": ["user_id"],
+                        "Values": [ [ applicantID ] ]
+                    },        },
+                "GlobalParameters": {
+    }
+        }
+
+    body = str.encode(json.dumps(data))
+
+    url = 'https://ussouthcentral.services.azureml.net/workspaces/e9081862165e486e8849e3770b43317e/services/3b41cd315ba747a2bc96e95390c1b54e/execute?api-version=2.0&details=true'
+    api_key = '/MxCFxk0v1A4dPp2+X2+Cy8KMW4WY2zfsRFyLBSyXW5kqMvhbAL2Vyo3xR8kk/1YGQMmUqpCX0H+J2Unnwiryw=='
+    headers = {'Content-Type':'application/json', 'Authorization':('Bearer '+ api_key)}
+
+    req = urllib.request.Request(url, body, headers) 
+
+    response = urllib.request.urlopen(req)
+
+    # If you are using Python 3+, replace urllib2 with urllib.request in the above code:
+    # req = urllib.request.Request(url, body, headers) 
+    # response = urllib.request.urlopen(req)
+
+    result = response.read()
+    result = json.loads(result)
+
+    users = result['Results']['output1']['value']['Values'][0]
+
+    liUsers=[]
+
+    for user in users:
+        user = int(user)
+        applicant = Applicant.objects.get(id=user)
+        liUsers.append(applicant)
+
+
+    context = {
+        'users':liUsers,
+        'employerID':employerID
+    }
+
+    return render(request, 'jobs/similar-applicants.html', context)

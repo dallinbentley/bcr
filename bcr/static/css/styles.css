@@ -64,7 +64,7 @@ input[type=text], input[type=password], input[type=tel], input[type=date], input
   }
   
   /* Add a background color when the inputs get focus */
-  input[type=text]:focus, input[type=password]:focus, input[type=tel]:focus, input[type=date]:focus, input[type=file]:focus {
+  input[type=text]:focus, input[type=password]:focus, input[type=tel]:focus, input[type=date]:focus, input[type=file]:focus, input[type=number]:focus {
     background-color: #ddd;
     outline: none;
   }
@@ -207,10 +207,35 @@ input {
     text-align: center;
   }
 
-/*************
-Input Styles
-**************/
+/************
+Table Styles
+*************/
+#applicant-info-table {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  #applicant-info-table td, #applicant-info-table th {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  #applicant-info-table tr:nth-child(even){background-color: #f2f2f2;}
+  
+  #applicant-info-table tr:hover {background-color: #ddd;}
+  
+  #applicant-info-table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: var(--slate-blue);
+    color: white;
+  }
 
+    td, th {
+      vertical-align: middle;
+    }
 
 /**************
 Homepage Stuff

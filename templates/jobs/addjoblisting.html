@@ -1,18 +1,8 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-<script>
-    function validateAndSend() {
-        if (myForm.telephone.wage == '' && myForm.mobile.salary == '') {
-            alert('You have to enter either wage or salary.');
-            return false;
-        }
-        else {
-            myForm.submit();
-        }
-    }
-</script>
   <form name='myform' class="modal-content" action="{% url 'addjobfunc' employerID=employerID%}" method='Post'>
+  {% csrf_token %}
     <div class="container">
       <h1>Add Job Listing</h1>
       <p>Please fill out this form to create a job listing.</p>
@@ -25,11 +15,13 @@
 
       <label for="jobtype"><b>Select the Type of Job:</b></label>
       <select name='jobtype' id='jobtype' required>
-        <option value='input job types'>input job types</option>
+      {% for jobtype in jobtypes %}
+        <option value='{{jobtype.job_type_description}}'>{{jobtype.job_type_description}}</option>{% endfor %}
         </select>
         <br>
         <br>
       
+      <p>You must enter either wage or salary.</p>
       <label for="wage"><b>Enter the Hourly Wage(PartTime Position):</b></label>
       <input type="number"  name="wage" id="wage" step= 0.01 min=0>
       
@@ -76,7 +68,7 @@
       <br>
       <br>
       
-        <button type="button" onclick='validateAndSend()'>Post Job Listing</button>
+        <button type="submit">Post Job Listing</button>
       
     </div>
   </form>

@@ -48,6 +48,11 @@
                     <li>{{Job.preferred_skill2}}
                     <li>{{Job.preferred_skill3}}
                 </ul>
+                {% if matching_skills == 3 %}
+                <h4 style="color:green">You Have Matching {{matching_skills}} Skills</h4>
+                {% else %} 
+                <h4 style="color:green">You Have Matching {{matching_skills}} Skills</h4>
+                {% endif %}
         </div>
 <button type="submit" onclick="location.href='{% url 'deletejob' jobID=Job.id %}'">Delete</button> 
 <button type="submit" onclick="location.href='{% url 'quickapply' jobID=Job.id applicantID=applicantID %}'">Quick Apply</button> 
