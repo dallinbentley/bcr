@@ -35,7 +35,7 @@ class JobListing(models.Model):
 class QuickApply(models.Model):
     job_listing = models.ForeignKey(JobListing, on_delete=models.CASCADE)
     applicant = models.ForeignKey('accounts.Applicant', on_delete=models.CASCADE)
-    matching_skills = models.SmallIntegerField
+    matching_skills = models.SmallIntegerField()
 
     def __str__(self):
       return  (self.job_listing.job_title + ', '+ self.applicant.first_name + ' ' + self.applicant.last_name + ', ' + str(self.matching_skills))

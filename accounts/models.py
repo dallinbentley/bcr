@@ -21,7 +21,7 @@ class Applicant(models.Model):
     password = models.CharField(max_length=50)
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
-    birthdate = models.CharField(max_length=50)
+    birthdate = models.DateField()
     phone = models.CharField(max_length=50)
     email = models.CharField(max_length=50)
     resume = models.FileField(upload_to="resume")
