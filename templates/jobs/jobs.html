@@ -43,6 +43,10 @@
             
         </a>
     </div>
+    {% if forloop.counter|divisibleby:4 %}
+    </div>
+    <div class="job-listings-cards">
+    {% endif %}
     {% endfor %}
 </div>
 {% endblock %}

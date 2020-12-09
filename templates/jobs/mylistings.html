@@ -35,13 +35,15 @@
     <th>Wage</th>
     <th>Salary</th>
     <th>Applicants</th>
+    <th>Delete Listing</th>
   </tr>
   {% for listing in joblistings%}
   <tr>
-    <td>{{listing.job_title}}</td>
+    <td><a href={% url 'updatelistingpage' employerID=employerID listingID=listing.id%}>{{listing.job_title}}</a></td>
     <td>{{listing.wage}}</td>
     <td>{{listing.salary}}</td>
     <td><a href={% url 'applications' employerID=employerID listingID=listing.id %}>See Applicants</a></td>
+    <td><button type="submit" onclick="location.href='{% url 'deletejob' employerID=employerID jobID=listing.id %}'">Delete</button></td>
   </tr>
   {% endfor %}
 </table>

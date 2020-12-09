@@ -1,64 +1,106 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-<script>
-    function validateAndSend() {
-        if (myForm.telephone.wage == '' && myForm.mobile.salary == '') {
-            alert('You have to enter either wage or salary.');
-            return false;
-        }
-        else {
-            myForm.submit();
-        }
-    }
-</script>
-
-<div id="id01" class="modal">
-  <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-  <form name='myform' class="modal-content" action="{% url 'addjobfunc'%}" method='Post'>
+<header id="top">    
+<nav>
+    <ul class="main-nav">
+      <li><a class="active" href="{% url 'employerhome' employerID=employerID %}"><span class="hidden">Home</span><i class="fas fa-home"></i></a></li>
+      <li><a href="{%url 'mylistings' employerID=employerID%}">My Listings</a></li>
+      <li><a href="{%url 'addlisting' employerID=employerID %}">Add Listing</a></li>
+      <li><a href="">Events</a></li>    
+    </ul>
+    <ul class="other-nav">
+        <div class="dropdown">
+            <li>
+              <a href="">
+                Account <i class="fas fa-angle-down"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              </a>
+            </li>
+            <div class="dropdown-content">
+                <li><a href="{% url 'home' %}">Profile</a></li>
+                <li><a href="">Saved Jobs</a></li>
+                <li><a href="">Applications</a></li>
+                <li><a href="{% url 'home' %}">Logout</a></li>
+            </div>
+        </div>
+      <li><a href=""><i class="fa fa-pinterest"></i></a></li>
+      <li><a href=""><i class="fa fa-envelope"></i></a></li>
+      <li><a href=""><i class="fa fa-facebook-square"></i></a></li>
+    </ul>
+  </nav> 
+</header>
+  <form name='myform' class="modal-content" action="{% url 'updatelisting' listingID=listingID employerID=employerID%}" method='Post'>
+  {% csrf_token %}
     <div class="container">
-      <h1>Add Job Listing</h1>
-      <p>Please fill out this form to create a job listing.</p>
+      <h1>Update Listing</h1>
       <hr>
-      <label for="jobtitle"><b>Enter the Job Title:</b></label>
-      <input type="text" placeholder="Job Title" name="jobtitle" id="jobtitle" required>
+      <label for="jobtitle"><b>Job Title:</b></label>
+      <input type="text" value={{listing.job_title}} name="jobtitle" id="jobtitle" required>
+
+      <br>
+      <br>
 
       <label for="jobtype"><b>Select the Type of Job:</b></label>
-      <select name='jobtype' id='jobtype' required>
-        <option value='input job types'>input job types</option>
+      <select name='jobtype' id='jobtype' value={{listing.job_type}} required>
+        {% for jobtype in jobtypes %}
+        <option value='{{jobtype.job_type_description}}'>{{jobtype.job_type_description}}</option>{% endfor %}
         </select>
-      
-      <label for="wage"><b>Enter the Hourly Wage(PartTime Position):</b></label>
-      <input type="number"  name="wage" id="wage" step= 0.01 min=0>
 
-      <label for="salary"><b>Enter the Starting Salary(FullTime Posisiton):</b></label>
-      <input type="number"  name="salary" id="salary" step=0.01 min=0>
+      <br>
+      <br>
       
+      <label for="wage"><b>Edit the Hourly Wage(PartTime Position):</b></label>
+      <input type="number" value={{listing.wage}} name="wage" id="wage" step= 0.01 min=0>
+
+      <br>
+      <br>
+
+      <label for="salary"><b>Edit the Starting Salary(FullTime Posisiton):</b></label>
+      <input type="number"  name="salary" value={{listing.salary}} id="salary" step=0.01 min=0>
+
+      <br>
+      <br>
     
-      <label for="jobdescription"><b>Enter the Job Description: </b></label>
-      <input type="text" placeholder="Job Description" name="jobdescription" id="jobdescription" required>
+      <label for="jobdescription"><b>Edit Job Description: </b></label>
+      <input type="text" placeholder="Job Description" value={{listing.job_description}} name="jobdescription" id="jobdescription" required>
 
-      <label for="preferredskill1"><b>Select a Preferred Skill of the Employee(optional):</b></label>
-      <select name='preferredskill1' id='preferredskill1' >
-        <option value='input skills'>input skills</option>
+      <br>
+      <br>
+
+      <label for="preferredskill1"><b>Edit Your Preferred Skill of the Employee(optional):</b></label>
+      <select name='preferredskill1' id='preferredskill1' value={{listing.preferred_skill1}} >
+        {% for skill in skills%}
+        <option value="{{skill.skill_description}}">{{skill.skill_description}}</option>
+        {% endfor %}
         </select>
 
-      <label for="preferredskill2"><b>Select a Preferred Skill of the Employee(optional):</b></label>
-      <select name='preferredskill2' id='preferredskill2' >
-        <option value='input skills'>input skills</option>
+      <br>
+      <br>
+
+      <label for="preferredskill2"><b>Edit Your Preferred Skill of the Employee(optional):</b></label>
+      <select name='preferredskill2' id='preferredskill2' value={{listing.preferred_skill2}}>
+        {% for skill in skills%}
+        <option value="{{skill.skill_description}}">{{skill.skill_description}}</option>
+        {% endfor %}
         </select>
 
-      <label for="preferredskill3"><b>Select a Preferred Skill of the Employee(optional):</b></label>
-      <select name='preferredskill3' id='preferredskill3' >
-        <option value='input skills'>input skills</option>
+      <br>
+      <br>
+
+      <label for="preferredskill3"><b>Edit Your Preferred Skill of the Employee(optional):</b></label>
+      <select name='preferredskill3' id='preferredskill3' value={{listing.preferred_skill3}}>
+        {% for skill in skills%}
+        <option value="{{skill.skill_description}}">{{skill.skill_description}}</option>
+        {% endfor %}
         </select>
 
-      
-        <button type="button" onclick='validateAndSend()'>Update Job Listing</button>
+      <br>
+      <br>
+
+        <button type="submit">Update Job Listing</button>
       
     </div>
   </form>
-</div>
 
 
 

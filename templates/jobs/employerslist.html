@@ -39,13 +39,13 @@
 
     {% for company in employerlist%}
         <div class="job-listings-card">
-            <div class="image-wrapper">
+            <div class="image-wrapper"><a href={%url 'empinfo' applicantID=applicantID employerID=company.id%}>
             <img src="{{company.company_image.url}}" style="width:300px;height:300px">
             </div>
             <h3>{{company.company_name}}</h3>
             <h5>{{company.company_address}}</h5>
             <h5>{{company.company_city}}, {{company.company_state}} {{company.company_zip}}</h5>
-    </div>
+    </div></a>
     
     {%endfor%}
 {% endblock %}
